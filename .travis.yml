@@ -21,5 +21,4 @@ addons:
 before_script:
   - sudo /etc/init.d/postgresql restart
   - psql -U postgres -c 'create database "bookmark";'
-  - psql -U postgres bookmark -c 'create extension "uuid-ossp";'
   - psql -c "CREATE USER bookmark_user WITH PASSWORD 'bookmarks_password';" -U postgres
