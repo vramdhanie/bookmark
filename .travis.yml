@@ -6,17 +6,12 @@ sudo: required
 
 env:
   global:
-  - NODE_ENV=test
-  - PGPORT=5433
-  - PGHOST=localhost
 
 services:
   - postgresql
 
 addons:
   apt:
-    sources:
-    - precise-pgdg-9.4
     packages:
     - postgresql-9.4
     - postgresql-contrib-9.4
