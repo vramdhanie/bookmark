@@ -22,3 +22,4 @@ before_script:
   - sudo /etc/init.d/postgresql restart
   - psql -U postgres -c 'create database "bookmark";'
   - psql -c "CREATE USER bookmark_user WITH PASSWORD 'bookmarks_password';" -U postgres
+  - psql -c "grant all privileges on database bookmark to bookmark_user;" -U postgres
