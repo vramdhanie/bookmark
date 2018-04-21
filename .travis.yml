@@ -6,12 +6,10 @@ sudo: required
 
 env:
   global:
+    - PGPORT=5433
 
 services:
-  postgres:
-    image: postgres:9.4
-    ports:
-      - "5432"
+  - postgresql
 
 addons:
   apt:
