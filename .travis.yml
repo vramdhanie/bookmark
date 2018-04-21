@@ -8,7 +8,10 @@ env:
   global:
 
 services:
-  - postgresql
+  postgres:
+    image: postgres:9.4
+    ports:
+      - "5432"
 
 addons:
   apt:
