@@ -1,4 +1,0 @@
-test:
-  - url:jdbc:postgresql://localhost:5432/bookmarks
-  - username:bookmark_user
-  - password:bookmarks_password
