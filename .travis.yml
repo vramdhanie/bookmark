@@ -1,25 +1,27 @@
 language: java
 jdk:
 - oraclejdk8
-
 sudo: required
-
 env:
   global:
-    - PGPORT=5432
-
+  - PGPORT=5432
 services:
-  - postgresql
-
+- postgresql
 addons:
   apt:
     packages:
     - postgresql-9.6
     - postgresql-contrib-9.6
   postgresql: 9.6
-
 before_script:
-  - sudo /etc/init.d/postgresql restart
-  - psql -U postgres -c 'create database "bookmarks";'
-  - psql -c "CREATE USER bookmark_user WITH PASSWORD 'bookmarks_password';" -U postgres
-  - psql -c "grant all privileges on database bookmarks to bookmark_user;" -U postgres
+- sudo /etc/init.d/postgresql restart
+- psql -U postgres -c 'create database "bookmarks";'
+- psql -c "CREATE USER bookmark_user WITH PASSWORD 'bookmarks_password';" -U postgres
+- psql -c "grant all privileges on database bookmarks to bookmark_user;" -U postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: Ets40l5+gsjmxKCLIYAUJ6Y4SZkOD3YzaiAOmCF3VZ5nBrdeoRXrlLXJphgRKH1YRZ/6DvGQrjfBIeU7NFhoCFs2Vdik4dBaO5nw92J56ZnP7/Jw9Y00XkXDClHJWT9EW8urbVbSKDNvqXSfUPU9iXCEhT9o2SU+osN9qBCMnUCXvFa8i3+IJMbE7R7ms+rNlHkSGDoBjsHurcobUztgj9qOUwUjY+LOZ9wM4G2DsXmNAUYCKa/G2GmY9ACjKM122+6CnlCFdelJenIIpCXTsZu007/qPtUeCtYYETZ0gRXBSM7ILdfLu4MFgyUUGaZyS4jV2R7Xt1HWZN6Zh5lq2uzXKTRLYAzMW5ySOkO19lEIWROGBSMTDmonN4Hhd9We2/RvP0Wglb3tBLRLnelv+xXfduz2gncr2UWnYJpXlfR1/2LqSYlWUHXhJSuy2c/JFGG1ONYSNP/ArJlmNUDMMqOvdPU3IWQH5zjpUMBs3s1ukMomW0/DvHnusBQcEbtX34/XhL7eyM9oAPLYov0Sy9aHcTcm6YsDpo4qscgh+BpW8xBQvH2/91pGclIy/SDq/6FvagdNBmnHgea+uafE4iPIJqQljVDA/8lQ5hs9RfUukd7uh8hoGOekoMDzWn2D2ECGhqvjiM7baKu99TlnYQG7I6TUHS8d0C7kk5YjJrw=
+  app: boiling-garden-14171
+  on:
+    repo: vramdhanie/bookmark
