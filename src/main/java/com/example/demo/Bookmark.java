@@ -12,6 +12,7 @@ public class Bookmark {
     private Long id;
 
     private String name;
+    private String url;
 
     public Bookmark(){}
 
@@ -21,6 +22,14 @@ public class Bookmark {
 
     public String getName(){
         return this.name;
+    }
+
+    public void setUrl(String url){
+        this.url = url;
+    }
+
+    public String getUrl(){
+        return this.url;
     }
 
 }
